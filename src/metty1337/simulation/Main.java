@@ -35,9 +35,9 @@ public class Main {
 
         GameMap map = new GameMap(entities);
 
-        map.setEntity(new Coordinates(0, 0), predator);
-
-        MapConsoleRenderer.render(map);
+        map.setEntity(new Coordinates(0, 0), rock);
+        map.setEntity(new Coordinates(0, 1), herbivore);
+        GameMapConsoleRenderer.render(map);
 
 
     }

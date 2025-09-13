@@ -18,11 +18,23 @@ public class GameMap {
         entities.put(coordinates, entity);
     }
 
-    public void setDefaultMapApprentice() {
-        for (int row = 0; row < 5; row++) {
-            for (int col = 0; col < 5; col++) {
+    public void setDefaultGameMapApprentice() {
+        for (int row = 0; row <= 15; row++) {
+            for (int col = 0; col <= 15; col++) {
 
             }
         }
+    }
+
+    public boolean IsSquareEmpty(Coordinates coordinates) {
+        return !entities.containsKey(coordinates);
+    }
+
+    public static String getEntitySprite(Entity entity) {
+        return entity.getSprite();
+    }
+
+    public Entity getEntity(Coordinates coordinates) {
+        return entities.get(coordinates);
     }
 }
