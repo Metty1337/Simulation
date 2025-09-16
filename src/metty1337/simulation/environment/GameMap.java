@@ -18,14 +18,6 @@ public class GameMap {
         entities.put(coordinates, entity);
     }
 
-    public void setDefaultGameMapApprentice() {
-        for (int row = 0; row <= 15; row++) {
-            for (int col = 0; col <= 15; col++) {
-
-            }
-        }
-    }
-
     public boolean IsSquareEmpty(Coordinates coordinates) {
         return !entities.containsKey(coordinates);
     }

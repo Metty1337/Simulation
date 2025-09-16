@@ -34,10 +34,9 @@ public class Main {
         Map<Coordinates, Entity> entities = new HashMap<>();
 
         GameMap map = new GameMap(entities);
-
-        map.setEntity(new Coordinates(0, 0), rock);
-        map.setEntity(new Coordinates(0, 1), herbivore);
+        InitSpawnEntities.INSTANCE.execute(map);
         GameMapConsoleRenderer.render(map);
+
 
 
     }
