@@ -6,9 +6,7 @@ import java.util.Objects;
 
 public abstract class Entity {
     public Coordinates coordinates;
-    public abstract String getSprite();
     public abstract int getSpawnRate();
-
     public Entity(Coordinates coordinates) {
         this.coordinates = coordinates;
     }

@@ -22,10 +22,6 @@ public class GameMap {
         return !entities.containsKey(coordinates);
     }
 
-    public static String getEntitySprite(Entity entity) {
-        return entity.getSprite();
-    }
-
     public Entity getEntity(Coordinates coordinates) {
         return entities.get(coordinates);
     }

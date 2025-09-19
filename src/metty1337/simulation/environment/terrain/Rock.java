@@ -4,7 +4,6 @@ import metty1337.simulation.Coordinates;
 import metty1337.simulation.environment.Entity;
 
 public class Rock extends Entity {
-    private static final String SPRITE = "⛰\uFE0F";
     private static final int SPAWN_RATE = 3;
 
     public Rock() {
@@ -13,11 +12,6 @@ public class Rock extends Entity {
 
     public Rock(Coordinates coordinates) {
         super(coordinates);
-    }
-
-    @Override
-    public String getSprite() {
-        return SPRITE;
     }
 
     @Override

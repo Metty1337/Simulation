@@ -8,10 +8,8 @@ import metty1337.simulation.environment.PropertiesStorage;
 import java.util.Map;
 import java.util.Random;
 
-import static metty1337.simulation.environment.GameMap.getEntitySprite;
-
-public class InitSpawnEntities extends Init {
-    private static final int PROBABILITY_TO_SPAWN_ENTITY = 3;
+public final class InitSpawnEntities extends Init {
+    private static final int PROBABILITY_TO_SPAWN_ENTITY = 2;
     private static final int TOTAL_PROBABILITY = 10;
     private static final Random rand = new Random();
 
