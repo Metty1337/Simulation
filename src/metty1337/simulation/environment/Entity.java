@@ -5,8 +5,8 @@ import metty1337.simulation.Coordinates;
 import java.util.Objects;
 
 public abstract class Entity {
-    public Coordinates coordinates;
-    public abstract int getSpawnRate();
+    private Coordinates coordinates;
+
     public Entity(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
@@ -14,6 +14,17 @@ public abstract class Entity {
     public Entity() {
         this(null);
     }
+
+    public abstract int getSpawnRate();
+
+    public Coordinates getCoordinates() {
+        return new Coordinates(coordinates.getColumn(), coordinates.getRow());
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -53,9 +53,8 @@ public class Main {
 //        System.out.println(grass.getSprite());
 
 
-        Map<Coordinates, Entity> entities = new HashMap<>();
 
-        GameMap map = new GameMap(entities);
+        GameMap map = new GameMap();
         InitSpawnEntities.INSTANCE.execute(map);
         GameMapConsoleRenderer.render(map);
         String[] test = {"\uD83D\uDD32", "\uD83D\uDC3A", "🐇", "\uD83E\uDD55", "\uD83C\uDF33", "\uD83D\uDDFB", "\uD83D\uDC68\u200D\uD83D\uDC69\u200D\uD83D\uDC67\u200D\uD83D\uDC66"};

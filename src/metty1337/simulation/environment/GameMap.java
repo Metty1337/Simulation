@@ -6,15 +6,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GameMap {
-    public Map<Coordinates, Entity> entities;
+    private final Map<Coordinates, Entity> entities;
 
-    public GameMap(Map<Coordinates, Entity> entities) {
-        entities = new HashMap<>();
-        this.entities = entities;
+    public GameMap() {
+        this.entities = new HashMap<>();
     }
 
     public void setEntity(Coordinates coordinates, Entity entity) {
-        entity.coordinates = coordinates;
+        entity.setCoordinates(coordinates);
         entities.put(coordinates, entity);
     }
 

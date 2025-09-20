@@ -1,5 +1,7 @@
 package metty1337.simulation;
 
+import metty1337.simulation.environment.GameMap;
+
 public interface Action {
-    public abstract void execute();
+    void execute(GameMap gameMap);
 }

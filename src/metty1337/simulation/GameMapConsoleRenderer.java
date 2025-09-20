@@ -4,12 +4,9 @@ import metty1337.simulation.environment.Entity;
 import metty1337.simulation.environment.GameMap;
 import metty1337.simulation.environment.PropertiesStorage;
 
-import java.util.Map;
-
 public final class GameMapConsoleRenderer {
-    private static final String SYMBOL_SPACE = " ";
     private static final String SYMBOL_GREY_BACKGROUND = "\u001B[48;5;240m";
-    private static final String SYMBOL_BLACK_SQUARE = "⬛\uFE0F";
+    private static final String SYMBOL_BLACK_SQUARE = "⬛";
     private static final String SYMBOL_RESET_BACKGROUND = "\u001B[0m";
     private static final String SYMBOL_PREDATOR = "\uD83D\uDC3A";
     private static final String SYMBOL_HERBIVORE = "🐇";
@@ -19,9 +16,9 @@ public final class GameMapConsoleRenderer {
 
 
     public static void render(GameMap gameMap) {
-        for (int row = PropertiesStorage.SIZE_Y; row >= 0; row--) {
+        for (int row = PropertiesStorage.WIDTH; row >= 0; row--) {
             StringBuilder line = new StringBuilder();
-            for (int col = 0; col <= PropertiesStorage.SIZE_X; col++) {
+            for (int col = 0; col <= PropertiesStorage.HEIGHT; col++) {
                 Coordinates coordinates = new Coordinates(col, row);
                 if (gameMap.IsSquareEmpty(coordinates)) {
                     line.append(colorizeSprite(SYMBOL_BLACK_SQUARE));

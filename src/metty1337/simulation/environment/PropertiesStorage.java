@@ -1,9 +1,9 @@
 package metty1337.simulation.environment;
 
-public class PropertiesStorage {
-    public static final int SIZE_X = 13;
-    public static final int SIZE_Y = 13;
+public final class PropertiesStorage {
+    public static final int HEIGHT = 13;
+    public static final int WIDTH = 13;
 
-    public PropertiesStorage() {
+    private PropertiesStorage() {
     }
 }

@@ -5,26 +5,24 @@ import metty1337.simulation.environment.EntityType;
 import metty1337.simulation.environment.GameMap;
 import metty1337.simulation.environment.PropertiesStorage;
 
-import java.util.Map;
 import java.util.Random;
 
 public final class InitSpawnEntities extends Init {
-    private static final int PROBABILITY_TO_SPAWN_ENTITY = 2;
+    private static final int TOTAL_ENTITY_SPAWN_RATE = 2;
     private static final int TOTAL_PROBABILITY = 10;
     private static final Random rand = new Random();
-
     public static final InitSpawnEntities INSTANCE = new InitSpawnEntities();
 
+    @Override
     public void execute(GameMap gameMap) {
-        Map<Coordinates, Entity> entities = gameMap.entities;
-        for (int row = 0; row <= PropertiesStorage.SIZE_Y; row++) {
-            for (int col = 0; col <= PropertiesStorage.SIZE_X; col++) {
+        for (int row = 0; row <= PropertiesStorage.WIDTH; row++) {
+            for (int col = 0; col <= PropertiesStorage.HEIGHT; col++) {
                 Coordinates coordinates = new Coordinates(col, row);
                 if (gameMap.IsSquareEmpty(coordinates)) {
-                    Entity e = EntityOrEmptySpawner();
-                    if (e != null) {
-                        e.coordinates = coordinates;
-                        entities.put(coordinates, e);
+                    Entity entity = EntityOrEmptySpawner();
+                    if (entity != null) {
+                        entity.setCoordinates(coordinates);
+                        gameMap.setEntity(coordinates, entity);
                     }
                 }
             }
@@ -41,10 +39,10 @@ public final class InitSpawnEntities extends Init {
             Entity chosen = null;
             int sum = 0;
 
-            for (EntityType e : EntityType.values()) {
-                sum += e.create().getSpawnRate();
+            for (EntityType entityType : EntityType.values()) {
+                sum += entityType.create().getSpawnRate();
                 if (roll < sum) {
-                    chosen = e.create();
+                    chosen = entityType.create();
                     break;
                 }
             }
@@ -56,7 +54,7 @@ public final class InitSpawnEntities extends Init {
     }
 
     private static boolean wouldSquareBeEmpty() {
-        return !(rand.nextInt(TOTAL_PROBABILITY) < PROBABILITY_TO_SPAWN_ENTITY);
+        return !(rand.nextInt(TOTAL_PROBABILITY) < TOTAL_ENTITY_SPAWN_RATE);
     }
 
     private static int sumOfSpawnRateOfAllEntities() {
