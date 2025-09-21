@@ -15,10 +15,10 @@ public abstract class Entity {
         this(null);
     }
 
-    public abstract int getSpawnRate();
+    public abstract int getSpawnRateValue();
 
     public Coordinates getCoordinates() {
-        return new Coordinates(coordinates.getColumn(), coordinates.getRow());
+        return new Coordinates(coordinates.column(), coordinates.row());
     }
 
     public void setCoordinates(Coordinates coordinates) {

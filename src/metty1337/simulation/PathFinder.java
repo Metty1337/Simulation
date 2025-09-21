@@ -1,0 +1,69 @@
+package metty1337.simulation;
+
+import metty1337.simulation.environment.GameMap;
+
+import java.util.*;
+
+public final class PathFinder {
+    private static final int STEP = 1;
+    private PathFinder() {}
+
+    public static List<Coordinates> getShortestPath(Coordinates start, Coordinates end, GameMap gameMap) {
+        Queue<Coordinates> queue = new LinkedList<>();
+        Map<Coordinates, Coordinates> parent = new HashMap<>();
+        Set<Coordinates> visited = new HashSet<>();
+
+        queue.add(start);
+        visited.add(start);
+        parent.put(start, null);
+
+        while (!queue.isEmpty()) {
+            Coordinates current = queue.poll();
+
+            if (current.equals(end)) {
+                return reconstructPath(parent,start, end);
+            }
+
+            List<Coordinates> neighbors = getNeighbors(current, gameMap);
+
+            for (Coordinates neighbor : neighbors) {
+                if (!visited.contains(neighbor)) {
+                    visited.add(neighbor);
+                    parent.put(neighbor, current);
+                    queue.add(neighbor);
+                }
+            }
+        }
+
+        return Collections.emptyList();
+    }
+
+    private static List<Coordinates> reconstructPath(Map<Coordinates, Coordinates> parent, Coordinates start, Coordinates end) {
+        List<Coordinates> path = new ArrayList<>();
+        for (Coordinates i = end; i != start; i = parent.get(i)) {
+            path.add(i);
+        }
+        Collections.reverse(path);
+        return path;
+    }
+
+    private static List<Coordinates> getNeighbors(Coordinates coordinates, GameMap gameMap) {
+        List<Coordinates> neighbors = new ArrayList<>();
+        List<Coordinates> possibleNeighbors = List.of(
+                new Coordinates(coordinates.column(), coordinates.row() + STEP),
+                new Coordinates(coordinates.column() + STEP, coordinates.row()),
+                new Coordinates(coordinates.column(), coordinates.row() - STEP),
+                new Coordinates(coordinates.column() - STEP, coordinates.row())
+
+        );
+
+        for (Coordinates neighbor : possibleNeighbors) {
+            if (gameMap.IsSquareEmpty(neighbor)) {
+                neighbors.add(neighbor);
+            }
+        }
+
+        return neighbors;
+    }
+
+}

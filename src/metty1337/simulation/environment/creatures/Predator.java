@@ -3,7 +3,7 @@ package metty1337.simulation.environment.creatures;
 import metty1337.simulation.Coordinates;
 
 public class Predator extends Creature {
-    private static final int SPAWN_RATE = 1;
+    private static final int SPAWN_RATE_VALUE = 1;
 
 
     public Predator() {
@@ -15,7 +15,7 @@ public class Predator extends Creature {
     }
 
     @Override
-    public int getSpawnRate() {
-        return SPAWN_RATE;
+    public int getSpawnRateValue() {
+        return SPAWN_RATE_VALUE;
     }
 }

@@ -2,7 +2,7 @@ package metty1337.simulation;
 
 import metty1337.simulation.environment.Entity;
 import metty1337.simulation.environment.GameMap;
-import metty1337.simulation.environment.PropertiesStorage;
+import metty1337.simulation.environment.GameMapConfig;
 
 public final class GameMapConsoleRenderer {
     private static final String SYMBOL_GREY_BACKGROUND = "\u001B[48;5;240m";
@@ -16,9 +16,9 @@ public final class GameMapConsoleRenderer {
 
 
     public static void render(GameMap gameMap) {
-        for (int row = PropertiesStorage.WIDTH; row >= 0; row--) {
+        for (int row = GameMapConfig.WIDTH; row >= 0; row--) {
             StringBuilder line = new StringBuilder();
-            for (int col = 0; col <= PropertiesStorage.HEIGHT; col++) {
+            for (int col = 0; col <= GameMapConfig.HEIGHT; col++) {
                 Coordinates coordinates = new Coordinates(col, row);
                 if (gameMap.IsSquareEmpty(coordinates)) {
                     line.append(colorizeSprite(SYMBOL_BLACK_SQUARE));
