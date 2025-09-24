@@ -1,12 +1,12 @@
 package metty1337.simulation;
 
 import metty1337.simulation.environment.GameMap;
+import metty1337.simulation.environment.creatures.Creature;
 
 import java.util.*;
 
 public final class PathFinder {
     private static final int STEP = 1;
-    private PathFinder() {}
 
     public static List<Coordinates> getShortestPath(Coordinates start, Coordinates end, GameMap gameMap) {
         Queue<Coordinates> queue = new LinkedList<>();
@@ -21,7 +21,7 @@ public final class PathFinder {
             Coordinates current = queue.poll();
 
             if (current.equals(end)) {
-                return reconstructPath(parent,start, end);
+                return reconstructPath(parent, start, end);
             }
 
             List<Coordinates> neighbors = getNeighbors(current, gameMap);
@@ -36,6 +36,27 @@ public final class PathFinder {
         }
 
         return Collections.emptyList();
+    }
+
+    public static List<List<Coordinates>> getAllPathsToCoordinates(Coordinates sourceCoordinates, List<Coordinates> coordinates, GameMap gameMap) {
+        List<List<Coordinates>> paths = new ArrayList<>();
+        for (Coordinates targetCoordinates : coordinates) {
+            List<Coordinates> path = getShortestPath(sourceCoordinates, targetCoordinates, gameMap);
+            paths.add(path);
+        }
+        return paths;
+    }
+
+    public static List<Coordinates> selectShortestPath(List<List<Coordinates>> paths, GameMap gameMap) {
+        int sizeCount = Integer.MAX_VALUE;
+        List<Coordinates> closestPossibleTargetPath = new ArrayList<>();
+        for (List<Coordinates> path : paths) {
+            if (path.size() < sizeCount) {
+                sizeCount = path.size();
+                closestPossibleTargetPath = path;
+            }
+        }
+        return closestPossibleTargetPath;
     }
 
     private static List<Coordinates> reconstructPath(Map<Coordinates, Coordinates> parent, Coordinates start, Coordinates end) {
@@ -54,16 +75,22 @@ public final class PathFinder {
                 new Coordinates(coordinates.column() + STEP, coordinates.row()),
                 new Coordinates(coordinates.column(), coordinates.row() - STEP),
                 new Coordinates(coordinates.column() - STEP, coordinates.row())
-
         );
 
         for (Coordinates neighbor : possibleNeighbors) {
-            if (gameMap.IsSquareEmpty(neighbor)) {
-                neighbors.add(neighbor);
+            if (gameMap.isCoordinatesValid(neighbor)) {
+                if (gameMap.isSquareEmpty(neighbor)) {
+                    neighbors.add(neighbor);
+                } else if (Creature.isEdible(gameMap.getEntity(neighbor))) {
+                    neighbors.add(neighbor);
+                }
             }
         }
 
         return neighbors;
+    }
+
+    private PathFinder() {
     }
 
 }

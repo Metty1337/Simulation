@@ -20,7 +20,7 @@ public final class GameMapConsoleRenderer {
             StringBuilder line = new StringBuilder();
             for (int col = 0; col <= GameMapConfig.HEIGHT; col++) {
                 Coordinates coordinates = new Coordinates(col, row);
-                if (gameMap.IsSquareEmpty(coordinates)) {
+                if (gameMap.isSquareEmpty(coordinates)) {
                     line.append(colorizeSprite(SYMBOL_BLACK_SQUARE));
                 } else {
                     line.append(colorizeSprite(getEntitySprite(gameMap.getEntity(coordinates))));
@@ -28,6 +28,7 @@ public final class GameMapConsoleRenderer {
             }
             System.out.println(line);
         }
+        System.out.println();
     }
 
     private static String getEntitySprite(Entity entity) {

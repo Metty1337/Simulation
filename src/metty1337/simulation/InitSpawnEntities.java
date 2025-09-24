@@ -18,11 +18,11 @@ public final class InitSpawnEntities extends Init {
         for (int row = 0; row <= GameMapConfig.WIDTH; row++) {
             for (int col = 0; col <= GameMapConfig.HEIGHT; col++) {
                 Coordinates coordinates = new Coordinates(col, row);
-                if (gameMap.IsSquareEmpty(coordinates)) {
+                if (gameMap.isSquareEmpty(coordinates)) {
                     Entity entity = EntityOrEmptySpawner();
                     if (entity != null) {
                         entity.setCoordinates(coordinates);
-                        gameMap.setEntity(coordinates, entity);
+                        gameMap.addEntity(coordinates, entity);
                     }
                 }
             }
@@ -47,10 +47,8 @@ public final class InitSpawnEntities extends Init {
                 }
             }
             return chosen;
-        } else {
-            return null;
         }
-
+        return null;
     }
 
     private static boolean wouldSquareBeEmpty() {
