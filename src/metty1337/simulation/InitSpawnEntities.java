@@ -15,8 +15,8 @@ public final class InitSpawnEntities extends Init {
 
     @Override
     public void execute(GameMap gameMap) {
-        for (int row = 0; row <= GameMapConfig.WIDTH; row++) {
-            for (int col = 0; col <= GameMapConfig.HEIGHT; col++) {
+        for (int row = 0; row <= gameMap.getWidth(); row++) {
+            for (int col = 0; col <= gameMap.getHeight(); col++) {
                 Coordinates coordinates = new Coordinates(col, row);
                 if (gameMap.isSquareEmpty(coordinates)) {
                     Entity entity = EntityOrEmptySpawner();

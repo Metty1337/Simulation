@@ -2,16 +2,25 @@ package metty1337.simulation.environment;
 
 import metty1337.simulation.Coordinates;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameMap {
     public final Map<Coordinates, Entity> entities; //сделать private в будущем
+    private final int height;
+    private final int width;
 
     public GameMap() {
         this.entities = new HashMap<>();
+        this.height = GameMapConfig.HEIGHT;
+        this.width = GameMapConfig.WIDTH;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
 
     public void addEntity(Coordinates coordinates, Entity entity) {
@@ -42,7 +51,7 @@ public class GameMap {
     }
 
     public Map<Coordinates, Entity> getEntities() {
-        return new HashMap<>(entities);
+        return Collections.unmodifiableMap(entities);
     }
 
     public List<Coordinates> getAllPossibleTargetCoordinates(Entity target) {

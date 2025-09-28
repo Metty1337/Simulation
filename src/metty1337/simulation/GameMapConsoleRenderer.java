@@ -16,9 +16,9 @@ public final class GameMapConsoleRenderer {
 
 
     public static void render(GameMap gameMap) {
-        for (int row = GameMapConfig.WIDTH; row >= 0; row--) {
+        for (int row = gameMap.getWidth(); row >= 0; row--) {
             StringBuilder line = new StringBuilder();
-            for (int col = 0; col <= GameMapConfig.HEIGHT; col++) {
+            for (int col = 0; col <= gameMap.getHeight(); col++) {
                 Coordinates coordinates = new Coordinates(col, row);
                 if (gameMap.isSquareEmpty(coordinates)) {
                     line.append(colorizeSprite(SYMBOL_BLACK_SQUARE));

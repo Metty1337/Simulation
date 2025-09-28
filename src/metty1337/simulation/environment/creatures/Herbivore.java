@@ -1,41 +1,31 @@
 package metty1337.simulation.environment.creatures;
 
-import metty1337.simulation.Coordinates;
-import metty1337.simulation.Eatable;
-import metty1337.simulation.PathFinder;
-import metty1337.simulation.TurnMove;
-import metty1337.simulation.environment.Entity;
-import metty1337.simulation.environment.EntityNavigator;
-import metty1337.simulation.environment.EntityType;
-import metty1337.simulation.environment.GameMap;
+import metty1337.simulation.*;
+import metty1337.simulation.environment.*;
 import metty1337.simulation.environment.terrain.Grass;
 
 public class Herbivore extends Creature implements Eatable {
-    private static final int SPAWN_RATE_VALUE = 1;
-    private static final int speed = 3;
+    private static final int SPAWN_RATE_VALUE = EntityConfig.HERBIVORE_SPAWN_VALUE;
+    private static final int speed = CreatureConfig.HERBIVORE_SPEED;
 
     public Herbivore() {
         super();
+        setHp(CreatureConfig.HERBIVORE_HP);
     }
 
     @Override
-    public void makeMove(GameMap gameMap) {
-        new TurnMove(this, this.getFood()).execute(gameMap);
-    }
-
-    @Override
-    public int getSpeed(){
+    public int getSpeed() {
         return speed;
     }
 
     @Override
-    public int getSpawnRateValue(){
+    public int getSpawnRateValue() {
         return SPAWN_RATE_VALUE;
     }
 
     @Override
-    public void eat(GameMap gameMap) {
-        gameMap.removeEntity(this.getCoordinates());
+    public void eat(Coordinates target, GameMap gameMap) {
+        gameMap.removeEntity(target);
     }
 
     @Override

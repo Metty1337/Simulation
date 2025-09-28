@@ -4,23 +4,26 @@ import metty1337.simulation.Coordinates;
 import metty1337.simulation.Eatable;
 import metty1337.simulation.TurnMove;
 import metty1337.simulation.environment.Entity;
+import metty1337.simulation.environment.EntityConfig;
 import metty1337.simulation.environment.EntityType;
 import metty1337.simulation.environment.GameMap;
 
 public class Predator extends Creature implements Eatable {
-    private static final int SPAWN_RATE_VALUE = 1;
-    private static final int speed = 2;
+    private static final int SPAWN_RATE_VALUE = EntityConfig.PREDATOR_SPAWN_VALUE;
+    private static final int speed = CreatureConfig.PREDATOR_SPEED;
+    private static final int damage = CreatureConfig.PREDATOR_DAMAGE;
 
     public Predator() {
         super();
+        setHp(CreatureConfig.PREDATOR_HP);
+    }
+
+    public int getDamage(){
+        return damage;
     }
 
     @Override
-    public void makeMove(GameMap gameMap) {
-        new TurnMove(this, this.getFood()).execute(gameMap);
-    }
-    @Override
-    public int getSpeed(){
+    public int getSpeed() {
         return speed;
     }
 
@@ -30,8 +33,15 @@ public class Predator extends Creature implements Eatable {
     }
 
     @Override
-    public void eat(GameMap gameMap) {
+    public void eat(Coordinates target, GameMap gameMap) {
+        Entity meal = gameMap.getEntity(target);
+        if (meal instanceof Creature creature) {
+            creature.setHp(creature.getHp() - this.getDamage());
 
+            if (creature.getHp() <= 0) {
+                gameMap.removeEntity(target);
+            }
+        }
     }
 
     @Override

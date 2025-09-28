@@ -1,7 +1,7 @@
-package metty1337.simulation.environment;
+package metty1337.simulation;
 
-import metty1337.simulation.Coordinates;
-import metty1337.simulation.PathFinder;
+import metty1337.simulation.environment.Entity;
+import metty1337.simulation.environment.GameMap;
 
 import java.util.List;
 

@@ -2,10 +2,11 @@ package metty1337.simulation;
 
 import metty1337.simulation.environment.GameMap;
 import metty1337.simulation.environment.Entity;
+
 public interface Eatable {
-    public void eat(GameMap gameMap);
+    void eat(Coordinates target, GameMap gameMap);
 
-    public Entity getFood();
+    Entity getFood();
 
-    public boolean canEat(Entity target);
+    boolean canEat(Entity target);
 }

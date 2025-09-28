@@ -7,6 +7,8 @@ import java.util.Objects;
 public abstract class Entity {
     private Coordinates coordinates;
 
+    public abstract int getSpawnRateValue();
+
     public Entity(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
@@ -14,8 +16,6 @@ public abstract class Entity {
     public Entity() {
         this(null);
     }
-
-    public abstract int getSpawnRateValue();
 
     public Coordinates getCoordinates() {
         return new Coordinates(coordinates.column(), coordinates.row());

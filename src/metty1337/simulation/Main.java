@@ -3,7 +3,9 @@ package metty1337.simulation;
 import metty1337.simulation.environment.Entity;
 import metty1337.simulation.environment.GameMap;
 import metty1337.simulation.environment.creatures.Herbivore;
+import metty1337.simulation.environment.creatures.Predator;
 
+import java.io.Reader;
 import java.util.Scanner;
 
 
@@ -14,17 +16,29 @@ public class Main {
         InitSpawnEntities.INSTANCE.execute(map);
         GameMapConsoleRenderer.render(map);
 
-        var entities = map.entities;
-        System.out.println(entities);
-        for (Entity entity : entities.values()) {
-            if (entity instanceof Herbivore herbivore) {
-                System.out.println(herbivore.getCoordinates());
-                herbivore.makeMove(map);
-                System.out.println(herbivore.getCoordinates());
-                break;
-            }
+        Scanner scanner = new Scanner(System.in);
+
+        var entities = map.getEntities();
+//        for (Entity entity : entities.values()) {
+//            if (entity instanceof Predator predator) {
+//                int flag = 1;
+//                while (flag != 0) {
+//                    System.out.println(predator.getCoordinates());
+//                    predator.makeMove(map);
+//                    System.out.println(predator.getCoordinates());
+//                    GameMapConsoleRenderer.render(map);
+//                    flag = scanner.nextInt();
+//                }
+//                break;
+//            }
+//        }
+
+        int a = 1;
+        while(a != 0) {
+            new TurnMoveAllCreatures().execute(map);
+            GameMapConsoleRenderer.render(map);
+            a = scanner.nextInt();
         }
-        GameMapConsoleRenderer.render(map);
 
     }
 }

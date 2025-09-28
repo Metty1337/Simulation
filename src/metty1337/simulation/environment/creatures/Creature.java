@@ -2,28 +2,42 @@ package metty1337.simulation.environment.creatures;
 
 import metty1337.simulation.Coordinates;
 import metty1337.simulation.Eatable;
+import metty1337.simulation.TurnEat;
+import metty1337.simulation.TurnMove;
 import metty1337.simulation.environment.Entity;
+import metty1337.simulation.EntityNavigator;
 import metty1337.simulation.environment.GameMap;
 
 public abstract class Creature extends Entity implements Eatable {
-    private int speed;
     private int hp;
 
-    public Creature(Coordinates coordinates, int speed, int hp) {
+    public abstract int getSpeed();
+
+    private Creature(Coordinates coordinates, int hp) {
         super(coordinates);
-        this.speed = speed;
         this.hp = hp;
     }
 
-    public abstract void makeMove(GameMap gameMap);
+    public void makeMove(GameMap gameMap) {
+        if (isAlive()) {
+            Coordinates targetCoordinates = EntityNavigator.findClosestEntityCoordinates(this.getCoordinates(), this.getFood(), gameMap);
+
+            if (EntityNavigator.isAtTarget(this.getCoordinates(), targetCoordinates, gameMap)) {
+                new TurnEat(this, gameMap.getEntity(targetCoordinates)).execute(gameMap);
+            } else {
+                new TurnMove(this, this.getFood()).execute(gameMap);
+            }
+        }
+    }
+
+    public boolean isAlive() {
+        return hp > 0;
+    }
 
     public Creature() {
-        this(null, 0, 0);
+        this(null, 0);
     }
 
-    public int getSpeed() {
-        return speed;
-    }
 
     public int getHp() {
         return hp;
@@ -34,15 +48,15 @@ public abstract class Creature extends Entity implements Eatable {
     }
 
     @Override
-    public abstract void eat(GameMap gameMap);
+    public abstract void eat(Coordinates target, GameMap gameMap);
 
     @Override
     public abstract boolean canEat(Entity target);
 
 
     public static boolean isEdible(Entity target) {
-        for (CreatureType creature : CreatureType.values()){
-            if (creature.create().canEat(target)){
+        for (CreatureType creature : CreatureType.values()) {
+            if (creature.create().canEat(target)) {
                 return true;
             }
         }
