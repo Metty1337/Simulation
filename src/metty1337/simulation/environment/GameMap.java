@@ -5,7 +5,7 @@ import metty1337.simulation.Coordinates;
 import java.util.*;
 
 public class GameMap {
-    public final Map<Coordinates, Entity> entities; //сделать private в будущем
+    private final Map<Coordinates, Entity> entities; //сделать private в будущем
     private final int height;
     private final int width;
 
@@ -26,6 +26,10 @@ public class GameMap {
     public void addEntity(Coordinates coordinates, Entity entity) {
         entity.setCoordinates(coordinates);
         entities.put(coordinates, entity);
+    }
+
+    public boolean isGameMapEmpty() {
+        return entities.isEmpty();
     }
 
     public boolean isSquareEmpty(Coordinates coordinates) {
@@ -70,5 +74,16 @@ public class GameMap {
 
     public boolean isEntityExist(Coordinates coordinates) {
         return entities.containsKey(coordinates);
+    }
+
+    public int getEntityCount(Entity target) {
+        Class<? extends Entity> targetClass = target.getClass();
+        int count = 0;
+        for (Entity possibleTarget : this.getEntities().values()) {
+            if (targetClass.equals(possibleTarget.getClass())) {
+                count++;
+            }
+        }
+        return count;
     }
 }

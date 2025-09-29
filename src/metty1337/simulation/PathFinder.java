@@ -33,7 +33,7 @@ public final class PathFinder {
                     queue.add(neighbor);
                 }
             }
-        }
+         }
 
         return Collections.emptyList();
     }

@@ -5,7 +5,6 @@ import metty1337.simulation.environment.GameMap;
 import metty1337.simulation.environment.creatures.Creature;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 

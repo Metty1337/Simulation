@@ -4,7 +4,7 @@ import metty1337.simulation.environment.Entity;
 import metty1337.simulation.environment.GameMap;
 import metty1337.simulation.environment.GameMapConfig;
 
-public final class GameMapConsoleRenderer {
+public class GameMapConsoleRenderer {
     private static final String SYMBOL_GREY_BACKGROUND = "\u001B[48;5;240m";
     private static final String SYMBOL_BLACK_SQUARE = "⬛";
     private static final String SYMBOL_RESET_BACKGROUND = "\u001B[0m";
@@ -15,18 +15,17 @@ public final class GameMapConsoleRenderer {
     private static final String SYMBOL_ROCK = "\uD83D\uDFEB";
 
 
-    public static void render(GameMap gameMap) {
+    public void render(GameMap gameMap) {
         for (int row = gameMap.getWidth(); row >= 0; row--) {
-            StringBuilder line = new StringBuilder();
             for (int col = 0; col <= gameMap.getHeight(); col++) {
                 Coordinates coordinates = new Coordinates(col, row);
                 if (gameMap.isSquareEmpty(coordinates)) {
-                    line.append(colorizeSprite(SYMBOL_BLACK_SQUARE));
+                    System.out.print(colorizeSprite(SYMBOL_BLACK_SQUARE));
                 } else {
-                    line.append(colorizeSprite(getEntitySprite(gameMap.getEntity(coordinates))));
+                    System.out.print(colorizeSprite(getEntitySprite(gameMap.getEntity(coordinates))));
                 }
             }
-            System.out.println(line);
+            System.out.println();
         }
         System.out.println();
     }
@@ -46,7 +45,7 @@ public final class GameMapConsoleRenderer {
         return SYMBOL_GREY_BACKGROUND + sprite + SYMBOL_RESET_BACKGROUND;
     }
 
-    private GameMapConsoleRenderer() {
+    public GameMapConsoleRenderer() {
     }
 
 }

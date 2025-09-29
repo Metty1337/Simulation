@@ -6,12 +6,15 @@ import metty1337.simulation.environment.creatures.Creature;
 
 import java.util.List;
 
-public class TurnMove extends Turn {
+public class TurnMove implements Action {
     private static final int SECOND_LAST_INDEX_OFFSET = 2;
     private static final int ZERO_INDEX_OFFSET = 1;
+    private final Creature source;
+    private final Entity target;
 
     public TurnMove(Creature source, Entity target) {
-        super(source, target);
+        this.source = source;
+        this.target = target;
     }
 
     @Override

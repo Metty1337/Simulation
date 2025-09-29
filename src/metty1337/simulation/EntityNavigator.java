@@ -15,6 +15,9 @@ public final class EntityNavigator {
 
         List<Coordinates> closestPossibleTargetPath = PathFinder.selectShortestPath(pathsToAllPossibleTargets, gameMap);
 
+        if (closestPossibleTargetPath.isEmpty()) {
+            return sourceCoordinates;
+        }
         return closestPossibleTargetPath.getLast();
     }
 
