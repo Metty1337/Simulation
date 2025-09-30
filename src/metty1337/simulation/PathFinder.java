@@ -47,7 +47,7 @@ public final class PathFinder {
         return paths;
     }
 
-    public static List<Coordinates> selectShortestPath(List<List<Coordinates>> paths, GameMap gameMap) {
+    public static List<Coordinates> selectShortestPath(List<List<Coordinates>> paths) {
         int sizeCount = Integer.MAX_VALUE;
         List<Coordinates> closestPossibleTargetPath = new ArrayList<>();
         for (List<Coordinates> path : paths) {

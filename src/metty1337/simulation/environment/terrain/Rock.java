@@ -1,6 +1,5 @@
 package metty1337.simulation.environment.terrain;
 
-import metty1337.simulation.Coordinates;
 import metty1337.simulation.environment.Entity;
 import metty1337.simulation.environment.EntityConfig;
 
@@ -9,10 +8,6 @@ public class Rock extends Entity {
 
     public Rock() {
         super();
-    }
-
-    public Rock(Coordinates coordinates) {
-        super(coordinates);
     }
 
     @Override

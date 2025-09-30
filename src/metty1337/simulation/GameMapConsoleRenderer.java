@@ -2,7 +2,6 @@ package metty1337.simulation;
 
 import metty1337.simulation.environment.Entity;
 import metty1337.simulation.environment.GameMap;
-import metty1337.simulation.environment.GameMapConfig;
 
 public class GameMapConsoleRenderer {
     private static final String SYMBOL_GREY_BACKGROUND = "\u001B[48;5;240m";

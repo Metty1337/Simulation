@@ -13,7 +13,7 @@ public final class EntityNavigator {
         List<Coordinates> allPossibleTargetCoordinates = gameMap.getAllPossibleTargetCoordinates(target);
         List<List<Coordinates>> pathsToAllPossibleTargets = PathFinder.getAllPathsToCoordinates(sourceCoordinates, allPossibleTargetCoordinates, gameMap);
 
-        List<Coordinates> closestPossibleTargetPath = PathFinder.selectShortestPath(pathsToAllPossibleTargets, gameMap);
+        List<Coordinates> closestPossibleTargetPath = PathFinder.selectShortestPath(pathsToAllPossibleTargets);
 
         if (closestPossibleTargetPath.isEmpty()) {
             return sourceCoordinates;

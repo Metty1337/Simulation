@@ -11,11 +11,12 @@ public class MoveCounter {
         return counter;
     }
 
-    public void resetCounter() {
-        counter = 0;
-    }
-
     public MoveCounter() {
         this.counter = 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Count of moves: " + counter;
     }
 }

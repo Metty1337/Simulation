@@ -1,6 +1,5 @@
 package metty1337.simulation.environment.terrain;
 
-import metty1337.simulation.Coordinates;
 import metty1337.simulation.environment.Entity;
 import metty1337.simulation.environment.EntityConfig;
 
@@ -9,11 +8,7 @@ public class Tree extends Entity {
 
 
     public Tree() {
-        this(null);
-    }
-
-    public Tree(Coordinates coordinates) {
-        super(coordinates);
+        super();
     }
 
     @Override

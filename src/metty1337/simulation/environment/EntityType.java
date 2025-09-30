@@ -8,7 +8,7 @@ import metty1337.simulation.environment.terrain.Tree;
 
 import java.util.function.Supplier;
 
-public enum EntityType { //немного подсмотрел, сам бы не догадался до функциональных интерфейсов
+public enum EntityType {
     GRASS(Grass::new),
     ROCK(Rock::new),
     TREE(Tree::new),
