@@ -1,4 +1,4 @@
-package metty1337.simulation.environment;
+package metty1337.simulation.config;
 
 public final class EntityConfig {
     public static final int GRASS_SPAWN_VALUE = 2;

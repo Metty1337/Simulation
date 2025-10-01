@@ -22,7 +22,11 @@ public abstract class Entity {
     }
 
     public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
+        if (GameMap.isCoordinatesValid(coordinates)) {
+            this.coordinates = coordinates;
+        } else {
+            throw new IllegalArgumentException(coordinates + " is not valid");
+        }
     }
 
     @Override

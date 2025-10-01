@@ -2,8 +2,8 @@ package metty1337.simulation.environment.creatures;
 
 import metty1337.simulation.Coordinates;
 import metty1337.simulation.Eatable;
-import metty1337.simulation.TurnEat;
-import metty1337.simulation.TurnMove;
+import metty1337.simulation.actions.TurnEat;
+import metty1337.simulation.actions.TurnMove;
 import metty1337.simulation.environment.Entity;
 import metty1337.simulation.EntityNavigator;
 import metty1337.simulation.environment.GameMap;

@@ -5,7 +5,7 @@ import metty1337.simulation.environment.GameMap;
 
 public final class PopulationChecker {
     public static boolean shouldSpawnMore(Entity target, GameMap gameMap) {
-        int countOfTarget = gameMap.getEntityCount(target);
+        int countOfTarget = GameMapUtils.getEntityCount(target, gameMap);
         return countOfTarget <= 1;
     }
 

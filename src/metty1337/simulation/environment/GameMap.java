@@ -1,6 +1,7 @@
 package metty1337.simulation.environment;
 
 import metty1337.simulation.Coordinates;
+import metty1337.simulation.config.GameMapConfig;
 
 import java.util.*;
 
@@ -24,8 +25,12 @@ public class GameMap {
     }
 
     public void addEntity(Coordinates coordinates, Entity entity) {
-        entity.setCoordinates(coordinates);
-        entities.put(coordinates, entity);
+        if (isCoordinatesValid(coordinates)) {
+            entity.setCoordinates(coordinates);
+            entities.put(coordinates, entity);
+        } else {
+            throw new IllegalArgumentException(coordinates + " is not valid");
+        }
     }
 
     public boolean isGameMapEmpty() {
@@ -39,7 +44,7 @@ public class GameMap {
         return false;
     }
 
-    public boolean isCoordinatesValid(Coordinates coordinates) {
+    public static boolean isCoordinatesValid(Coordinates coordinates) {
         boolean isPositive = coordinates.column() >= 0 && coordinates.row() >= 0;
         boolean fitsSize = (coordinates.column() <= GameMapConfig.WIDTH) && (coordinates.row() <= GameMapConfig.HEIGHT);
         return isPositive && fitsSize;
@@ -47,39 +52,24 @@ public class GameMap {
     }
 
     public Entity getEntity(Coordinates coordinates) {
-        return entities.get(coordinates);
+        if (isCoordinatesValid(coordinates)) {
+            return entities.get(coordinates);
+        } else {
+            throw new IllegalArgumentException(coordinates + " is not valid");
+        }
     }
 
     public void removeEntity(Coordinates coordinates) {
-        entities.remove(coordinates);
+        if (isCoordinatesValid(coordinates)) {
+            entities.remove(coordinates);
+        } else {
+            throw new IllegalArgumentException(coordinates + " is not valid");
+        }
+
     }
 
     public Map<Coordinates, Entity> getEntities() {
         return Collections.unmodifiableMap(entities);
     }
 
-    public List<Coordinates> getAllPossibleTargetCoordinates(Entity target) {
-        List<Coordinates> allPossibleTargetCoordinates = new ArrayList<>();
-        List<Entity> possibleTargets = new ArrayList<>(this.getEntities().values());
-        String nameOfTargetClass = target.getClass().getSimpleName();
-
-        for (Entity possibleTarget : possibleTargets) {
-            String targetClass = possibleTarget.getClass().getSimpleName();
-            if (targetClass.equals(nameOfTargetClass)) {
-                allPossibleTargetCoordinates.add(possibleTarget.getCoordinates());
-            }
-        }
-        return allPossibleTargetCoordinates;
-    }
-
-    public int getEntityCount(Entity target) {
-        Class<? extends Entity> targetClass = target.getClass();
-        int count = 0;
-        for (Entity possibleTarget : this.getEntities().values()) {
-            if (targetClass.equals(possibleTarget.getClass())) {
-                count++;
-            }
-        }
-        return count;
-    }
 }

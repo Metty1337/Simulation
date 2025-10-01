@@ -38,27 +38,6 @@ public final class PathFinder {
         return Collections.emptyList();
     }
 
-    public static List<List<Coordinates>> getAllPathsToCoordinates(Coordinates sourceCoordinates, List<Coordinates> coordinates, GameMap gameMap) {
-        List<List<Coordinates>> paths = new ArrayList<>();
-        for (Coordinates targetCoordinates : coordinates) {
-            List<Coordinates> path = getShortestPath(sourceCoordinates, targetCoordinates, gameMap);
-            paths.add(path);
-        }
-        return paths;
-    }
-
-    public static List<Coordinates> selectShortestPath(List<List<Coordinates>> paths) {
-        int sizeCount = Integer.MAX_VALUE;
-        List<Coordinates> closestPossibleTargetPath = new ArrayList<>();
-        for (List<Coordinates> path : paths) {
-            if (path.size() < sizeCount) {
-                sizeCount = path.size();
-                closestPossibleTargetPath = path;
-            }
-        }
-        return closestPossibleTargetPath;
-    }
-
     private static List<Coordinates> reconstructPath(Map<Coordinates, Coordinates> parent, Coordinates start, Coordinates end) {
         List<Coordinates> path = new ArrayList<>();
         for (Coordinates i = end; i != start; i = parent.get(i)) {
@@ -78,7 +57,7 @@ public final class PathFinder {
         );
 
         for (Coordinates neighbor : possibleNeighbors) {
-            if (gameMap.isCoordinatesValid(neighbor)) {
+            if (GameMap.isCoordinatesValid(neighbor)) {
                 if (gameMap.isSquareEmpty(neighbor)) {
                     neighbors.add(neighbor);
                 } else if (Creature.isEdible(gameMap.getEntity(neighbor))) {

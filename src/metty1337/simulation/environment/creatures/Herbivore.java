@@ -1,6 +1,8 @@
 package metty1337.simulation.environment.creatures;
 
 import metty1337.simulation.*;
+import metty1337.simulation.config.CreatureConfig;
+import metty1337.simulation.config.EntityConfig;
 import metty1337.simulation.environment.*;
 
 public class Herbivore extends Creature implements Eatable {

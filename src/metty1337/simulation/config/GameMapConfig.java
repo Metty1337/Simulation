@@ -1,4 +1,4 @@
-package metty1337.simulation.environment;
+package metty1337.simulation.config;
 
 public final class GameMapConfig {
     public static final int HEIGHT = 13;

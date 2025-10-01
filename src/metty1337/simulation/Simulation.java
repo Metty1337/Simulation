@@ -1,5 +1,9 @@
 package metty1337.simulation;
 
+import metty1337.simulation.actions.Action;
+import metty1337.simulation.actions.InitSpawnEntities;
+import metty1337.simulation.actions.PopulationRestorer;
+import metty1337.simulation.actions.TurnMoveAllCreatures;
 import metty1337.simulation.environment.GameMap;
 
 import java.util.List;

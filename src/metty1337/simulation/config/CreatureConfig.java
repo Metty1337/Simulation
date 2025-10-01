@@ -1,4 +1,4 @@
-package metty1337.simulation.environment.creatures;
+package metty1337.simulation.config;
 
 public final class CreatureConfig {
     public static final int HERBIVORE_HP = 3;
