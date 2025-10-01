@@ -1,4 +1,4 @@
-package metty1337.simulation;
+package metty1337.simulation.render;
 
 public final class SpriteCollection {
     public static final String SYMBOL_GREY_BACKGROUND = "\u001B[48;5;240m";

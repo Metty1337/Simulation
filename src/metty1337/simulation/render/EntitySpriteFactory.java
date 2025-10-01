@@ -1,4 +1,4 @@
-package metty1337.simulation;
+package metty1337.simulation.render;
 
 import metty1337.simulation.environment.Entity;
 

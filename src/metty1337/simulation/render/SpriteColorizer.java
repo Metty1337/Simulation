@@ -1,4 +1,4 @@
-package metty1337.simulation;
+package metty1337.simulation.render;
 
 public final class SpriteColorizer {
     public static String colorizeSprite(String sprite) {

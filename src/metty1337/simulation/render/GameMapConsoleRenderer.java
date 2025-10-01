@@ -1,9 +1,6 @@
 package metty1337.simulation.render;
 
 import metty1337.simulation.Coordinates;
-import metty1337.simulation.EntitySpriteFactory;
-import metty1337.simulation.SpriteCollection;
-import metty1337.simulation.SpriteColorizer;
 import metty1337.simulation.gamemap.GameMap;
 
 public class GameMapConsoleRenderer {
