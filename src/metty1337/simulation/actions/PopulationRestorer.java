@@ -1,9 +1,9 @@
 package metty1337.simulation.actions;
 
-import metty1337.simulation.MissingEntitiesSpawner;
+import metty1337.simulation.spawner.MissingEntitiesSpawner;
 import metty1337.simulation.PopulationChecker;
 import metty1337.simulation.environment.Entity;
-import metty1337.simulation.environment.GameMap;
+import metty1337.simulation.gamemap.GameMap;
 import metty1337.simulation.environment.creatures.Creature;
 
 import java.util.List;

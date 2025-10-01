@@ -1,7 +1,8 @@
-package metty1337.simulation.environment;
+package metty1337.simulation.gamemap;
 
 import metty1337.simulation.Coordinates;
 import metty1337.simulation.config.GameMapConfig;
+import metty1337.simulation.environment.Entity;
 
 import java.util.*;
 
@@ -11,9 +12,13 @@ public class GameMap {
     private final int width;
 
     public GameMap() {
+        this(GameMapConfig.HEIGHT, GameMapConfig.WIDTH);
+    }
+
+    public GameMap(int height, int width) {
         this.entities = new HashMap<>();
-        this.height = GameMapConfig.HEIGHT;
-        this.width = GameMapConfig.WIDTH;
+        this.height = height;
+        this.width = width;
     }
 
     public int getHeight() {

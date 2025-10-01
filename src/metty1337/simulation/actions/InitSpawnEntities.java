@@ -1,9 +1,9 @@
 package metty1337.simulation.actions;
 
 import metty1337.simulation.Coordinates;
-import metty1337.simulation.SpawnManager;
+import metty1337.simulation.spawner.SpawnManager;
 import metty1337.simulation.environment.Entity;
-import metty1337.simulation.environment.GameMap;
+import metty1337.simulation.gamemap.GameMap;
 
 public class InitSpawnEntities implements Action {
 

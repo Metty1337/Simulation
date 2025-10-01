@@ -1,8 +1,10 @@
-package metty1337.simulation;
+package metty1337.simulation.spawner;
 
+import metty1337.simulation.Coordinates;
+import metty1337.simulation.gamemap.GameMapUtils;
 import metty1337.simulation.environment.Entity;
 import metty1337.simulation.environment.EntityType;
-import metty1337.simulation.environment.GameMap;
+import metty1337.simulation.gamemap.GameMap;
 
 public final class MissingEntitiesSpawner {
     private static final int LIMIT_TO_ADDITIONAL_SPAWN = 5;

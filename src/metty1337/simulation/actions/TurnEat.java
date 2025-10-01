@@ -1,7 +1,7 @@
 package metty1337.simulation.actions;
 
 import metty1337.simulation.environment.Entity;
-import metty1337.simulation.environment.GameMap;
+import metty1337.simulation.gamemap.GameMap;
 import metty1337.simulation.environment.creatures.Creature;
 
 public class TurnEat implements Action {

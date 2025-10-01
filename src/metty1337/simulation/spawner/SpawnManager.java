@@ -1,4 +1,4 @@
-package metty1337.simulation;
+package metty1337.simulation.spawner;
 
 import metty1337.simulation.environment.Entity;
 import metty1337.simulation.environment.EntityType;
@@ -11,22 +11,24 @@ public final class SpawnManager {
     private static final Random rand = new Random();
 
     public static Entity entityOrEmptySpawner() {
-        if (!wouldSquareBeEmpty()) {
-            int roll = rand.nextInt(sumOfSpawnRateOfAllTypesOfEntity());
-
-            Entity chosen = null;
-            int sum = 0;
-
-            for (EntityType entityType : EntityType.values()) {
-                sum += entityType.create().getSpawnRateValue();
-                if (roll < sum) {
-                    chosen = entityType.create();
-                    break;
-                }
-            }
-            return chosen;
+        if (wouldSquareBeEmpty()) {
+            return null;
         }
-        return null;
+
+        int roll = rand.nextInt(sumOfSpawnRateOfAllTypesOfEntity());
+
+        Entity chosen = null;
+        int sum = 0;
+
+        for (EntityType entityType : EntityType.values()) {
+            sum += entityType.create().getSpawnRateValue();
+            if (roll < sum) {
+                chosen = entityType.create();
+                break;
+            }
+        }
+        return chosen;
+
     }
 
     public static boolean wouldSquareBeEmpty() {
@@ -41,5 +43,6 @@ public final class SpawnManager {
         return sum;
     }
 
-    private SpawnManager() {}
+    private SpawnManager() {
+    }
 }

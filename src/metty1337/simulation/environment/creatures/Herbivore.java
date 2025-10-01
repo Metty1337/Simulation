@@ -4,6 +4,7 @@ import metty1337.simulation.*;
 import metty1337.simulation.config.CreatureConfig;
 import metty1337.simulation.config.EntityConfig;
 import metty1337.simulation.environment.*;
+import metty1337.simulation.gamemap.GameMap;
 
 public class Herbivore extends Creature implements Eatable {
     private static final int SPAWN_RATE_VALUE = EntityConfig.HERBIVORE_SPAWN_VALUE;

@@ -1,7 +1,7 @@
 package metty1337.simulation;
 
-import metty1337.simulation.environment.GameMap;
 import metty1337.simulation.environment.creatures.Creature;
+import metty1337.simulation.gamemap.GameMap;
 
 import java.util.*;
 

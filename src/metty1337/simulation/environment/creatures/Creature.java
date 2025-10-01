@@ -5,8 +5,8 @@ import metty1337.simulation.Eatable;
 import metty1337.simulation.actions.TurnEat;
 import metty1337.simulation.actions.TurnMove;
 import metty1337.simulation.environment.Entity;
-import metty1337.simulation.EntityNavigator;
-import metty1337.simulation.environment.GameMap;
+import metty1337.simulation.gamemap.EntityNavigator;
+import metty1337.simulation.gamemap.GameMap;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,7 +6,7 @@ import metty1337.simulation.config.CreatureConfig;
 import metty1337.simulation.environment.Entity;
 import metty1337.simulation.config.EntityConfig;
 import metty1337.simulation.environment.EntityType;
-import metty1337.simulation.environment.GameMap;
+import metty1337.simulation.gamemap.GameMap;
 
 public class Predator extends Creature implements Eatable {
     private static final int SPAWN_RATE_VALUE = EntityConfig.PREDATOR_SPAWN_VALUE;

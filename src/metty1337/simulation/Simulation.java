@@ -4,11 +4,13 @@ import metty1337.simulation.actions.Action;
 import metty1337.simulation.actions.InitSpawnEntities;
 import metty1337.simulation.actions.PopulationRestorer;
 import metty1337.simulation.actions.TurnMoveAllCreatures;
-import metty1337.simulation.environment.GameMap;
+import metty1337.simulation.gamemap.GameMap;
+import metty1337.simulation.render.GameMapConsoleRenderer;
 
 import java.util.List;
 
 public class Simulation implements Runnable {
+    private static final int TIME_TO_PAUSE = 800;
     private volatile boolean running = true;
     private volatile boolean paused = false;
     GameMap gameMap;
@@ -71,7 +73,7 @@ public class Simulation implements Runnable {
             while (!paused) {
                 nextTurn();
                 try {
-                    Thread.sleep(800);
+                    Thread.sleep(TIME_TO_PAUSE);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     break;

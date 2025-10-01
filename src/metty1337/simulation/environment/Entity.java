@@ -1,6 +1,7 @@
 package metty1337.simulation.environment;
 
 import metty1337.simulation.Coordinates;
+import metty1337.simulation.gamemap.GameMap;
 
 import java.util.Objects;
 
